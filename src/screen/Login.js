@@ -37,7 +37,7 @@ const Login = () => {
     const mEmail = await AsyncStorage.getItem("EMAIL");
     const mPass = await AsyncStorage.getItem("PASSWORD");
 
-    if (email === mEmail && mPass === password) {
+    if (email === mEmail ? mPass === password : null) {
       setModalVisible(false);
       navigation.navigate("Home");
     } else {
@@ -71,11 +71,11 @@ const Login = () => {
           setEmail(txt);
         }}
       />
-      {badEmail === true && (
+      {badEmail === true ? (
         <Text style={{ marginTop: 10, marginLeft: 30, color: "red" }}>
           Vui lòng nhập tài khoản
         </Text>
-      )}
+      ) : null}
       <CustomTextInput
         type={"passwpord"}
         placeholder={"Nhập mật khẩu"}
@@ -85,11 +85,11 @@ const Login = () => {
           setPassword(txt);
         }}
       />
-      {badPassword === true && (
+      {badPassword === true ? (
         <Text style={{ marginTop: 10, marginLeft: 30, color: "red" }}>
           Vui lòng nhập mật khẩu
         </Text>
-      )}
+      ) : null}
       <CommonButton
         title={"ĐĂNG NHẬP"}
         bgColor={"#000"}

@@ -1,11 +1,11 @@
-import { View, Text, Image, TextInput, ScrollView } from "react-native";
+import { View, Text, Image, ScrollView } from "react-native";
 import React, { useState } from "react";
 import CustomTextInput from "../common/CustomTextInput";
 import CommonButton from "../common/CommonButton";
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 let isValid = true;
-const Signup = () => {
+const Register = () => {
   const navigation = useNavigation();
   const [name, setName] = useState("");
   const [badName, setBadName] = useState(false);
@@ -19,7 +19,7 @@ const Signup = () => {
   const [badMobile, setBadMobile] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
-  const signupp = () => {
+  const signup = () => {
     setButtonDisabled(true);
 
     if (name == "") {
@@ -102,11 +102,11 @@ const Signup = () => {
           }}
           icon={require("../images/user.png")}
         />
-        {badName === true && (
+        {badName === true ? (
           <Text style={{ marginTop: 10, marginLeft: 30, color: "red" }}>
             Vui lòng nhập họ tên
           </Text>
-        )}
+        ) : null}
         <CustomTextInput
           placeholder={"Nhập tên tài khoản"}
           value={email}
@@ -115,11 +115,11 @@ const Signup = () => {
           }}
           icon={require("../images/user.png")}
         />
-        {badEmail === true && (
+        {badEmail === true ? (
           <Text style={{ marginTop: 10, marginLeft: 30, color: "red" }}>
             Vui long nhập tên tài khoản
           </Text>
-        )}
+        ) : null}
 
         <CustomTextInput
           placeholder={"Nhập số điện thoại"}
@@ -130,11 +130,11 @@ const Signup = () => {
           }}
           icon={require("../images/phone.png")}
         />
-        {badMobile === true && (
+        {badMobile === true ? (
           <Text style={{ marginTop: 10, marginLeft: 30, color: "red" }}>
             Vui lòng nhập số điện thoại
           </Text>
-        )}
+        ) : null}
         <CustomTextInput
           value={password}
           onChangeText={(txt) => {
@@ -143,11 +143,11 @@ const Signup = () => {
           placeholder={"Nhập mật khẩu"}
           icon={require("../images/lock.png")}
         />
-        {badPassword === true && (
+        {badPassword === true ? (
           <Text style={{ marginTop: 10, marginLeft: 30, color: "red" }}>
             Vui lòng nhập mật khẩu
           </Text>
-        )}
+        ) : null}
         <CustomTextInput
           value={confirmPassword}
           onChangeText={(txt) => {
@@ -156,17 +156,17 @@ const Signup = () => {
           placeholder={"Nhập lại mật khẩu"}
           icon={require("../images/lock.png")}
         />
-        {badConfirmPassword === true && (
+        {badConfirmPassword === true ? (
           <Text style={{ marginTop: 10, marginLeft: 30, color: "red" }}>
             Mật khẩu nhập lại không khớp
           </Text>
-        )}
+        ) : null}
         <CommonButton
           title={"ĐĂNG KÝ"}
           bgColor={buttonDisabled ? "#8e8e8e" : "#000"}
           textColor={"#fff"}
           onPress={() => {
-            signupp();
+            signup();
           }}
           disabled={buttonDisabled}
         />
@@ -190,4 +190,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Register;
